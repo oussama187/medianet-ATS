@@ -1,0 +1,7 @@
+cd c:\Users\oussama\.gemini\antigravity\playground\eternal-cosmic\backend
+php artisan serve
+
+cd c:\Users\oussama\.gemini\antigravity\playground\eternal-cosmic\dashboard-app
+npm run dev
+
+npx n8n
