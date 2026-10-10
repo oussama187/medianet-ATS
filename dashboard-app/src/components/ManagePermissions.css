@@ -1,0 +1,186 @@
+.permissions-container {
+    padding: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.page-header {
+    margin-bottom: 3rem;
+}
+
+.page-header h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.75rem;
+}
+
+.page-header p {
+    color: #64748b;
+    font-size: 1.125rem;
+}
+
+.recruiters-list-granular {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.recruiter-row {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.recruiter-row.active {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.recruiter-main {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.recruiter-main:hover {
+    background: #f8fafc;
+}
+
+.recruiter-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.recruiter-profile .avatar {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    color: white;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.recruiter-profile .info h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.125rem;
+}
+
+.recruiter-profile .info span {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.recruiter-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.recruiter-meta .badge {
+    padding: 0.4rem 1rem;
+    background: #eff6ff;
+    color: #3b82f6;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.permissions-expansion {
+    padding: 0 2rem 2rem;
+    border-top: 1px solid #f1f5f9;
+    background: #fcfdfe;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.granular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.permission-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    color: #1e293b;
+    border-bottom: 1px solid #f8fafc;
+    padding-bottom: 0.75rem;
+}
+
+.category-header h4 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.action-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.action-checkbox:hover {
+    background: #f1f5f9;
+}
+
+.action-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #4f46e5;
+}
+
+.no-data {
+    text-align: center;
+    padding: 48px;
+    color: #9ca3af;
+}

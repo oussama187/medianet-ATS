@@ -1,0 +1,54 @@
+flowchart LR
+    classDef actor fill:transparent,stroke:none,color:#333,font-weight:bold
+    classDef usecase fill:#f9f9f9,stroke:#333,stroke-width:1.5px,rx:20,ry:20,color:#000
+
+    Admin((Admin)):::actor
+    Recruiter((Recruiter)):::actor
+    Candidate((Candidate)):::actor
+    System((AI System)):::actor
+
+    subgraph ATS [AI-Powered Applicant Tracking System]
+        direction TB
+        UC1([Register & Authenticate]):::usecase
+        
+        UC2([Browse Public Jobs]):::usecase
+        UC3([Submit Application & CV]):::usecase
+        UC4([Track Application Status]):::usecase
+        
+        UC5([Manage Job Postings]):::usecase
+        UC6([Manage Departments]):::usecase
+        UC7([Manage Recruiter Permissions]):::usecase
+        
+        UC8([Manage Pipeline & Status]):::usecase
+        UC9([Schedule Interviews]):::usecase
+        UC10([View Analytics & Match Scores]):::usecase
+        UC11([Hire Candidate]):::usecase
+        
+        UC12([Extract CV Text]):::usecase
+        UC13([Calculate AI Match Score]):::usecase
+        UC14([Sync Employee Record]):::usecase
+    end
+
+    Candidate --- UC1
+    Candidate --- UC2
+    Candidate --- UC3
+    Candidate --- UC4
+
+    Admin -.->|<< inherits >>| Recruiter
+    Admin --- UC5
+    Admin --- UC6
+    Admin --- UC7
+    
+    Recruiter --- UC1
+    Recruiter --- UC8
+    Recruiter --- UC9
+    Recruiter --- UC10
+    Recruiter --- UC11
+
+    UC3 -.->|<< includes >>| UC12
+    UC12 -.->|<< includes >>| UC13
+    UC11 -.->|<< triggers >>| UC14
+    
+    System --- UC12
+    System --- UC13
+    System --- UC14

@@ -1,0 +1,180 @@
+{
+    "updatedAt":  "2026-08-21T00:03:36.000Z",
+    "createdAt":  "2026-06-29T10:34:02.393Z",
+    "id":  "faRu9pGOzrst4Jat",
+    "name":  "My workflow",
+    "description":  null,
+    "active":  true,
+    "isArchived":  false,
+    "nodes":  [
+                  {
+                      "parameters":  {
+                                         "fromEmail":  "medianet@ats.com",
+                                         "toEmail":  "={{ $json.body.candidate.email }}",
+                                         "subject":  "=Update on your application for: {{ $json.body.job_title }}",
+                                         "html":  "=\u003c!DOCTYPE html\u003e\n\u003chtml\u003e\n\u003chead\u003e\n    \u003cstyle\u003e\n        body {\n            font-family: \u0027Inter\u0027, \u0027Segoe UI\u0027, Tahoma, Geneva, Verdana, sans-serif;\n            background-color: #f4f7f6;\n            margin: 0;\n            padding: 40px;\n        }\n        .container {\n            max-width: 600px;\n            background-color: #ffffff;\n            margin: 0 auto;\n            border-radius: 12px;\n            overflow: hidden;\n            box-shadow: 0 4px 15px rgba(0,0,0,0.05);\n        }\n        .header {\n            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);\n            padding: 30px;\n            text-align: center;\n        }\n        .header h1 {\n            color: #ffffff;\n            margin: 0;\n            font-size: 24px;\n            letter-spacing: 0.5px;\n        }\n        .content {\n            padding: 40px;\n            color: #334155;\n            line-height: 1.6;\n            font-size: 16px;\n        }\n        .status-box {\n            background-color: #f8fafc;\n            border-left: 4px solid #3b82f6;\n            padding: 20px;\n            margin: 25px 0;\n            border-radius: 0 8px 8px 0;\n        }\n        .status-title {\n            font-size: 14px;\n            text-transform: uppercase;\n            color: #64748b;\n            font-weight: bold;\n            margin-bottom: 5px;\n        }\n        .status-value {\n            font-size: 20px;\n            color: #0f172a;\n            font-weight: 700;\n        }\n        .footer {\n            background-color: #f8fafc;\n            padding: 20px;\n            text-align: center;\n            font-size: 14px;\n            color: #94a3b8;\n            border-top: 1px solid #e2e8f0;\n        }\n    \u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n    \u003cdiv class=\"container\"\u003e\n        \u003cdiv class=\"header\"\u003e\n            \u003ch1\u003eApplication Update\u003c/h1\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"content\"\u003e\n            \u003cp\u003eHi \u003cstrong\u003e{{ $json.body.candidate.first_name }}\u003c/strong\u003e,\u003c/p\u003e\n            \n            \u003cp\u003eWe are writing to let you know that there has been an update regarding your application for the \u003cstrong\u003e{{ $json.body.job_title }}\u003c/strong\u003e position.\u003c/p\u003e\n            \n            \u003cdiv class=\"status-box\"\u003e\n                \u003cdiv class=\"status-title\"\u003eNew Application Status\u003c/div\u003e\n                \u003cdiv class=\"status-value\"\u003e{{ $json.body.new_step }}\u003c/div\u003e\n            \u003c/div\u003e\n            \n            \u003cp\u003eOur recruitment team is currently reviewing your profile in this stage. If any action is required from your side (such as scheduling an interview), we will reach out to you shortly.\u003c/p\u003e\n            \n            \u003cp\u003eBest regards,\u003cbr\u003e\u003cstrong\u003eThe Talent Acquisition Team\u003c/strong\u003e\u003c/p\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"footer\"\u003e\n            © 2026 Recruitment Platform. All rights reserved.\n        \u003c/div\u003e\n    \u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "275e36d2-c6a0-4168-8f62-92f8541e8d15",
+                      "name":  "Send Email",
+                      "type":  "n8n-nodes-base.emailSend",
+                      "typeVersion":  2.1,
+                      "position":  [
+                                       1540,
+                                       440
+                                   ],
+                      "credentials":  {
+                                          "smtp":  {
+                                                       "id":  "3OvDU5BUFOA488US",
+                                                       "name":  "SMTP account"
+                                                   }
+                                      }
+                  },
+                  {
+                      "parameters":  {
+                                         "conditions":  {
+                                                            "options":  {
+                                                                            "caseSensitive":  true,
+                                                                            "leftValue":  "",
+                                                                            "typeValidation":  "strict"
+                                                                        },
+                                                            "conditions":  [
+                                                                               {
+                                                                                   "id":  "83b03b1d-ab40-48fd-aa0c-3286e5b9e666",
+                                                                                   "leftValue":  "={{ $json.body.is_interview_stage }}",
+                                                                                   "rightValue":  "",
+                                                                                   "operator":  {
+                                                                                                    "type":  "boolean",
+                                                                                                    "operation":  "true",
+                                                                                                    "singleValue":  true
+                                                                                                }
+                                                                               }
+                                                                           ],
+                                                            "combinator":  "and"
+                                                        },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "2445841f-455a-44f7-93e8-a5d3a7abd6a7",
+                      "name":  "If",
+                      "type":  "n8n-nodes-base.if",
+                      "typeVersion":  2,
+                      "position":  [
+                                       1100,
+                                       360
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "calendar":  {
+                                                          "__rl":  true,
+                                                          "value":  "oussamaourir123@gmail.com",
+                                                          "mode":  "list",
+                                                          "cachedResultName":  "oussamaourir123@gmail.com"
+                                                      },
+                                         "start":  "={{ new Date($json.body.interview_date).toISOString().split(\u0027.\u0027)[0] + \u0027Z\u0027 }}",
+                                         "end":  "={{ new Date(new Date($json.body.interview_date).getTime() + 60 * 60 * 1000).toISOString().split(\u0027.\u0027)[0] + \u0027Z\u0027 }}",
+                                         "additionalFields":  {
+                                                                  "attendees":  [
+
+                                                                                ],
+                                                                  "summary":  "Technical Interview"
+                                                              }
+                                     },
+                      "id":  "5544dcc1-cf06-478d-8658-9b3d884c5b99",
+                      "name":  "Google Calendar",
+                      "type":  "n8n-nodes-base.googleCalendar",
+                      "typeVersion":  1.1,
+                      "position":  [
+                                       1300,
+                                       260
+                                   ],
+                      "credentials":  {
+                                          "googleCalendarOAuth2Api":  {
+                                                                          "id":  "V0yxPWnStnmwVLpP",
+                                                                          "name":  "Google Calendar account"
+                                                                      }
+                                      }
+                  },
+                  {
+                      "parameters":  {
+                                         "httpMethod":  "POST",
+                                         "path":  "da374d02-f3f9-4f10-b138-80b038295019",
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "e01b32ce-03b7-4b15-a7d8-0fae18fd4b02",
+                      "name":  "Webhook",
+                      "type":  "n8n-nodes-base.webhook",
+                      "typeVersion":  2,
+                      "position":  [
+                                       880,
+                                       360
+                                   ],
+                      "webhookId":  "da374d02-f3f9-4f10-b138-80b038295019"
+                  }
+              ],
+    "connections":  {
+                        "If":  {
+                                   "main":  [
+                                                [
+                                                    {
+                                                        "node":  "Google Calendar",
+                                                        "type":  "main",
+                                                        "index":  0
+                                                    }
+                                                ],
+                                                [
+                                                    {
+                                                        "node":  "Send Email",
+                                                        "type":  "main",
+                                                        "index":  0
+                                                    }
+                                                ]
+                                            ]
+                               },
+                        "Webhook":  {
+                                        "main":  [
+                                                     [
+                                                         {
+                                                             "node":  "If",
+                                                             "type":  "main",
+                                                             "index":  0
+                                                         }
+                                                     ]
+                                                 ]
+                                    }
+                    },
+    "settings":  {
+                     "executionOrder":  "v1"
+                 },
+    "staticData":  null,
+    "meta":  {
+                 "templateCredsSetupCompleted":  true
+             },
+    "nodeGroups":  [
+
+                   ],
+    "pinData":  {
+
+                },
+    "versionId":  "d06c57c4-6d8e-4adb-be7b-828f66742b3f",
+    "activeVersionId":  "d06c57c4-6d8e-4adb-be7b-828f66742b3f",
+    "versionCounter":  2,
+    "triggerCount":  1,
+    "sourceWorkflowId":  null,
+    "tags":  [
+
+             ],
+    "shared":  [
+
+               ],
+    "versionMetadata":  {
+                            "name":  null,
+                            "description":  null
+                        }
+}
